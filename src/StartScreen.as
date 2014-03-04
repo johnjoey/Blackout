@@ -2,10 +2,14 @@ package
 {
 	import org.flixel.*;
 	
-	public class MenuState extends FlxState 
+	public class StartScreen extends FlxState 
 	{
+		[Embed(source = "../assets/audio/track.mp3")] private var track:Class;
+		
 		override public function create():void 
 		{
+			FlxG.playMusic(track, 1);
+			
 			FlxG.mouse.show();
 			
 			var title:FlxText;
@@ -23,14 +27,14 @@ package
 			super.update();
 		}
 		
-		public function MenuState() 
+		public function StartScreen() 
 		{
 			super();
 		}
 		
 		public function startGame():void
 		{
-			FlxG.switchState(new menu1);
+			FlxG.switchState(new MainMenu);
 		}
 		
 	}
