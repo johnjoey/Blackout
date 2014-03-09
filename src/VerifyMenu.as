@@ -5,7 +5,7 @@ package
 	public class VerifyMenu extends FlxState
 	{
 		[Embed(source = "../assets/img/background.png")] private var BgImg:Class;
-		[Embed(source = "../assets/img/parchment_large.png")] private var parchmentLargeImg:Class;
+		[Embed(source = "../assets/img/parchment_large_clean.png")] private var parchmentLargeImg:Class;
 		
 		private var background:FlxSprite;
 		private var scroll:FlxSprite;

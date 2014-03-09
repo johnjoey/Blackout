@@ -5,7 +5,7 @@ package
 	public class MainMenu extends FlxState
 	{
 		[Embed(source = "../assets/img/background.png")] private var BgImg:Class;
-		[Embed(source = "../assets/img/parchment.png")] private var parchmentImg:Class;
+		[Embed(source = "../assets/img/parchment_clean.png")] private var parchmentImg:Class;
 		[Embed(source = "../assets/img/tree_alive.png")] private var treeAliveImg:Class;
 		[Embed(source = "../assets/img/tree_dead.png")] private var treeDeadImg:Class;
 		
@@ -46,13 +46,13 @@ package
 			background = new FlxSprite(0, 0, BgImg);
 			add(background);
 			
-			scroll1 = new FlxSprite(10, 5, parchmentImg);
-			scroll2 = new FlxSprite(10, 75, parchmentImg);
-			scroll3 = new FlxSprite(10, 145, parchmentImg);
+			scroll1 = new FlxSprite(5, 5, parchmentImg);
+			scroll2 = new FlxSprite(5, 75, parchmentImg);
+			scroll3 = new FlxSprite(5, 145, parchmentImg);
 			scroll4 = new FlxSprite(110, 5, parchmentImg);
-			scroll5 = new FlxSprite(210, 5, parchmentImg);
-			scroll6 = new FlxSprite(210, 75, parchmentImg);
-			scroll7 = new FlxSprite(210, 145, parchmentImg);
+			scroll5 = new FlxSprite(215, 5, parchmentImg);
+			scroll6 = new FlxSprite(215, 75, parchmentImg);
+			scroll7 = new FlxSprite(215, 145, parchmentImg);
 			add(scroll1);
 			add(scroll2);
 			add(scroll3);
@@ -61,7 +61,7 @@ package
 			add(scroll6);
 			add(scroll7);
 			
-			tree = new FlxSprite(110, 80, treeDeadImg);
+			tree = new FlxSprite(115, 80, treeDeadImg);
 			add(tree);
 			
 			scrollText1 = new FlxText(25, 13, FlxG.width, "School 1");
