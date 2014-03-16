@@ -6,9 +6,10 @@ package
 	{
 		[Embed(source = "../assets/img/background.png")] private var BgImg:Class;
 		[Embed(source = "../assets/img/parchment_large_clean.png")] private var parchmentLargeImg:Class;
-		
+			
 		private var background:FlxSprite;
 		private var scroll:FlxSprite;
+		private var notFoundImg:FlxSprite;
 		
 		private var scrollText1:FlxText;
 		private var scrollText2:FlxText;
@@ -36,11 +37,15 @@ package
 			
 			backButton = new FlxButton(20, 215, "< Back", backToMain);
 			add(backButton);
+			
+			
+			
+			
 		}
 		
 		public function backToMain():void
 		{
-			FlxG.switchState(new MainMenu);
+			FlxG.switchState(new MainMenu(2));
 		}
 		
 		public function getRandomTaskText():String

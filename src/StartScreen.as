@@ -1,6 +1,8 @@
 package  
 {
+	import flash.text.TextField;
 	import org.flixel.*;
+	import org.flixel.system.input.Input;
 	
 	public class StartScreen extends FlxState 
 	{
@@ -16,7 +18,7 @@ package
 			title = new FlxText(0, 16, FlxG.width, "Blackout");
 			title.setFormat (null, 16, 0xFFFFFFFF, "center");
 			add(title);
-			
+						
 			var startButton:FlxButton;
 			startButton = new FlxButton(120, 100, "Start Game", startGame);
 			add(startButton);
@@ -34,7 +36,7 @@ package
 		
 		public function startGame():void
 		{
-			FlxG.switchState(new MainMenu);
+			FlxG.switchState(new MainMenu(0));
 		}
 		
 	}

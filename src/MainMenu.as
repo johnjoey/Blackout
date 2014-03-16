@@ -7,6 +7,7 @@ package
 		[Embed(source = "../assets/img/background.png")] private var BgImg:Class;
 		[Embed(source = "../assets/img/parchment_clean.png")] private var parchmentImg:Class;
 		[Embed(source = "../assets/img/tree_alive.png")] private var treeAliveImg:Class;
+		[Embed(source = "../assets/img/tree_soon.png")] private var treeSoonImg:Class;
 		[Embed(source = "../assets/img/tree_dead.png")] private var treeDeadImg:Class;
 		
 		
@@ -36,11 +37,19 @@ package
 		
 		private var closeScrollButton1_level2:FlxButton;
 		
+		private var scrollText1_level2:FlxText;
+		
 		private var getNewButton:FlxButton;
 		private var verifyButton:FlxButton;
 		private var scoreButton:FlxButton;
+	
+		private var treeState:int;
 		
-				
+		public function MainMenu(TS:int):void
+		{
+			treeState = TS;
+		}
+		
 		override public function create():void 
 		{
 			background = new FlxSprite(0, 0, BgImg);
@@ -61,7 +70,18 @@ package
 			add(scroll6);
 			add(scroll7);
 			
-			tree = new FlxSprite(115, 80, treeDeadImg);
+			switch(treeState) {
+				case 0:
+					tree = new FlxSprite(115, 80, treeDeadImg);
+					break;
+				case 1:
+					tree = new FlxSprite(115, 80, treeSoonImg);
+					break;
+				case 2:
+					tree = new FlxSprite(115, 80, treeAliveImg);
+					break;
+			}
+			
 			add(tree);
 			
 			scrollText1 = new FlxText(25, 13, FlxG.width, "School 1");
@@ -86,7 +106,7 @@ package
 			scrollText7.setFormat(null, 7, 0xff000000);
 			add(scrollText7);
 			
-			expandScrollButton1 = new FlxButton(18, 30, "Expand", addLevel2Scroll);
+			expandScrollButton1 = new FlxButton(15, 40, "Expand", addLevel2Scroll);
 			add(expandScrollButton1);
 			
 			getNewButton = new FlxButton(20, 215, "Get New", newActivity);
@@ -94,14 +114,28 @@ package
 			scoreButton = new FlxButton(220, 215, "Leaderboard", highScores);
 			add(getNewButton);
 			add(verifyButton);
-			add(scoreButton);
-		}
-		/*
-		override public function update():void
-		{
+			add(scoreButton);			
+			
+			/*stuff that isn't visisble yet*/
+			scroll1_level2 = new FlxSprite(8, 8, parchmentImg);
+			closeScrollButton1_level2 = new FlxButton(18, 23, "Close", closeLevel2Scroll);
+			
+			scrollText1_level2 = new FlxText(10, 10, FlxG.width, "Additional Info:");
+			scrollText1_level2.setFormat(null, 7, 0xff000000);
+			
+			add(scroll1_level2);
+			add(closeScrollButton1_level2);
+			add(scrollText1_level2);
+			
+			closeLevel2Scroll();
 			
 		}
-		*/
+		
+		override public function update():void
+		{
+			super.update();
+		}
+	
 		public function newActivity():void
 		{
 			FlxG.switchState(new GetNewMenu);
@@ -119,18 +153,20 @@ package
 		
 		public function addLevel2Scroll():void
 		{
-			scroll1_level2 = new FlxSprite(20, 7, parchmentImg);
-			add(scroll1_level2);
+			scroll1_level2.exists = true;
+			closeScrollButton1_level2.exists = true;
+			scrollText1_level2.exists = true;
 			
-			closeScrollButton1_level2 = new FlxButton(15, 27, "Close", closeLevel2Scroll);
-			add(closeScrollButton1_level2);
+			expandScrollButton1.exists = false;
 		}
 		
 		public function closeLevel2Scroll():void
 		{
 			scroll1_level2.exists = false;
-
 			closeScrollButton1_level2.exists = false;
+			scrollText1_level2.exists = false;
+			
+			expandScrollButton1.exists = true;
 		}
 				
 	}
