@@ -32,7 +32,7 @@ package
 		
 		public function backToMain():void
 		{
-			FlxG.switchState(new MainMenu);
+			FlxG.switchState(new MainMenu(2));
 		}
 		
 	}
