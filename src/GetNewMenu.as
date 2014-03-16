@@ -29,9 +29,7 @@ package
 			scrollText1.setFormat(null, 16, 0xfffffff);
 			add(scrollText1);
 			
-			var randomText:String;
-			randomText = getRandomTaskText;
-			scrollText2 = new FlxText(60, 60, FlxG.width, randomText);
+			scrollText2 = new FlxText(60, 60, FlxG.width, getRandomTaskText());
 			scrollText2.setFormat(null, 16, 0xffffffff);
 			add(scrollText2);
 			
