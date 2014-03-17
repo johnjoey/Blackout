@@ -2,7 +2,7 @@ package
 {
 	import org.flixel.*;
 	
-	public class HighScoresMenu extends FlxState 
+	public class CurrentTaskMenu extends FlxState
 	{
 		[Embed(source = "../assets/imgNew/background.png")] private var BgImg:Class;
 		[Embed(source = "../assets/imgNew/layers.png")] private var layeredPaperImg:Class;
@@ -15,12 +15,11 @@ package
 		private var scrollText2:FlxText;
 		private var scrollText3:FlxText;
 		private var scrollText4:FlxText;
-		private var scrollText5:FlxText;
-		private var scrollText6:FlxText;
 		
+		private var completeButton:FlxButton;
 		private var backButton:FlxButton;
 		
-		public function HighScoresMenu() 
+		public function CurrentTaskMenu() 
 		{
 			background = new FlxSprite(0, 0, BgImg);
 			add(background);
@@ -28,33 +27,29 @@ package
 			scroll = new FlxSprite(50, 50, layeredPaperImg);
 			add(scroll);
 			
-			scrollText1 = new FlxText(90, 70, FlxG.width, "High Scores!");
+			scrollText1 = new FlxText(90, 70, FlxG.width, "Your current task is...");
 			scrollText1.setFormat(null, 28, 0xff000000);
 			add(scrollText1);
 			
-			scrollText2 = new FlxText(160, 150, FlxG.width, "School 4 - 70 points - 2014");
-			scrollText2.setFormat(null, 20, 0xff000000);
+			scrollText2 = new FlxText(140, 120, FlxG.width, " - Recycle 10 bottles.");
+			scrollText2.setFormat(null, 24, 0xff000000);
 			add(scrollText2);
 			
-			scrollText3 = new FlxText(160, 180, FlxG.width, "School 2 - 65 points - 2012");
-			scrollText3.setFormat(null, 20, 0xff000000);
+			scrollText3 = new FlxText(160, 200, FlxG.width, "Description");
+			scrollText3.setFormat(null, 28, 0xff000000);
 			add(scrollText3);
 			
-			scrollText4 = new FlxText(160, 210, FlxG.width, "School 7 - 65 points - 2013");
+			scrollText4 = new FlxText(160, 240, FlxG.width, "Collect empty bottles that you see, \nbut do not touch broken ones! \n ...");
 			scrollText4.setFormat(null, 20, 0xff000000);
 			add(scrollText4);
 			
-			scrollText5 = new FlxText(160, 240, FlxG.width, "School 5 - 55 points - 2014");
-			scrollText5.setFormat(null, 20, 0xff000000);
-			add(scrollText5);
-			
-			scrollText5 = new FlxText(160, 270, FlxG.width, "School 4 - 50 points - 2013");
-			scrollText5.setFormat(null, 20, 0xff000000);
-			add(scrollText5);
-			
-			scrollText6 = new FlxText(160, 300, FlxG.width, "School 1 - 50 points - 2014");
-			scrollText6.setFormat(null, 20, 0xff000000);
-			add(scrollText6);
+			completeButton = new FlxButton(580, 70, "< Back", backToMain);
+			completeButton.color = 0xff00ff00;
+			completeButton.loadGraphic(buttonTallImg);
+			completeButton.label = new FlxText(0, 0, FlxG.width, "Complete");
+			completeButton.label.setFormat(null, 24, 0xff000000);
+			completeButton.labelOffset = new FlxPoint(30, 25);
+			add(completeButton);
 			
 			backButton = new FlxButton(580, 330, "< Back", backToMain);
 			backButton.loadGraphic(buttonTallImg);
@@ -66,9 +61,8 @@ package
 		
 		public function backToMain():void
 		{
-			FlxG.switchState(new MainMenu(2));
+			FlxG.switchState(new MainMenu(0));
 		}
-		
 	}
 
 }
