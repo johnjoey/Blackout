@@ -48,10 +48,15 @@ package
 			scrollText1.setFormat(null, 28, 0x000000);
 			add(scrollText1);
 			
+<<<<<<< HEAD
 			index = randomiseIndex();
 			
 			scrollText2 = new FlxText(130, 120, FlxG.width, getTaskText());
 			scrollText2.setFormat(null, 20, 0x000000);
+=======
+			scrollText2 = new FlxText(60, 60, FlxG.width, getRandomTaskText());
+			scrollText2.setFormat(null, 16, 0xffffffff);
+>>>>>>> b346bb70d359962afa691fd756336de416c72ab5
 			add(scrollText2);
 			
 			scrollText3 = new FlxText(160, 160, FlxG.width, getTaskInfoText());
